@@ -1,0 +1,27 @@
+name: Download files
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    # Customize to whatever interval you need:
+    - cron:  '0 12 * * *'
+
+jobs:
+  download:
+    name: Download
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - run: npm install
+    - run: npm run scrape
+    - run: |
+        git config user.name gurmanbh
+        git config user.email gurmabh@gmail.com
+        git add .
+        git commit --allow-empty -m "Latest downloaded"
+        git push origin master
