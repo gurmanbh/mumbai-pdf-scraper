@@ -12,7 +12,7 @@ const date = new Date()
 const format = time.timeFormat('%d-%m-%Y')
 const formattedDate = format(date)
 const base = './files/'
-// downloadPDF(`${base}dashboard/${formattedDate}`,DASHBOARD)
+downloadPDF(`${base}dashboard/${formattedDate}`,DASHBOARD)
 downloadPDF(`${base}containment-zones/${formattedDate}`,CONTAINMENT)
 downloadPDF(`${base}sealed-buildings/${formattedDate}`,SB)
 
